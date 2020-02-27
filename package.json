@@ -1,0 +1,24 @@
+{
+  "name": "typerpc",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start:server": "node_modules/.bin/ts-node src/server/grpcServer.ts",
+    "start:client": "node_modules/.bin/ts-node src/client/client.ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^13.7.1",
+    "ts-node": "^8.6.2",
+    "typescript": "^3.7.5"
+  },
+  "dependencies": {
+    "@grpc/proto-loader": "^0.5.3",
+    "grpc": "^1.24.2",
+    "simple-grpc": "file:../simple-grpc"
+  }
+}

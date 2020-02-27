@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+package login;
+
+service Login {
+  rpc login (Credentials) returns (Token) {}
+}
+
+message Credentials {
+  string username = 1;
+  string password = 2;
+}
+
+message Token {
+  string token = 1;
+}
