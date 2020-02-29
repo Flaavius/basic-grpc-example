@@ -1,6 +1,6 @@
 import { 
   rpc,
-} from "simple-grpc";
+} from "basic-grpc";
 
 export interface ILogin {
   login: rpc<ICredentials, IToken>;

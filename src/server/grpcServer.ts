@@ -4,10 +4,15 @@ import {
   IProtoService, 
   RPCError, 
   createServerCreds
-} from "simple-grpc";
+} from "basic-grpc";
 
 import { join } from "path";
 import { ILogin } from "../protos/login";
+import { 
+  createError, 
+  ErrorType 
+} from "./errors";
+
 
 ((async () => {
 
@@ -22,6 +27,13 @@ import { ILogin } from "../protos/login";
     serviceName: "Login",  // serviceName (what is defined in the .proto file as Service)
     handlers: { // the function handlers for every rpc call
       login: async ({ username, password }) => {
+
+        if(!username || !password) {
+          console.log(`Invalid Data`);
+          throw new RPCError(createError(ErrorType.INVALID_BODY));
+        }
+
+        console.log(`Login Request for: ${username} with password: ${password}`);
         if(password === "awesomeSecretPassword") 
           return  {
             token: generateToken(username)
@@ -30,7 +42,7 @@ import { ILogin } from "../protos/login";
         // you can throw an RPCError  with a code and details for the error 
         // the first 15 are gRPC generic you can add custom errors from 15+
         // see: https://github.com/grpc/grpc/blob/master/doc/statuscodes.md
-        throw new RPCError(22, "Invalid Credentials");
+        throw new RPCError(createError(ErrorType.INVALID_PASSWORD));
       }
     },
   };

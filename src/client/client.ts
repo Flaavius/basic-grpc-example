@@ -1,4 +1,4 @@
-import { createClient, createClientCreds } from "simple-grpc";
+import { createClient, createClientCreds } from "basic-grpc";
 import { ILogin } from "../protos/login";
 import { join } from "path";
 
@@ -31,7 +31,7 @@ import { join } from "path";
   try {
     // you can then call the login function for the loginService :)
     // it will return a promise with the data or it Will throw an RPCError with code and details.
-    const data = await loginService.login({ username: "JohnDoe", password: "awesomeSecretPassword" });
+    const data = await loginService.login({ username: "", password: "noooope" });
     console.log(JSON.stringify(data, undefined, 2));
   } catch ({ code, details }) {
     console.log("ERR", code, details);

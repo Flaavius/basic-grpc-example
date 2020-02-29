@@ -17,8 +17,6 @@
     "typescript": "^3.7.5"
   },
   "dependencies": {
-    "@grpc/proto-loader": "^0.5.3",
-    "grpc": "^1.24.2",
-    "simple-grpc": "file:../simple-grpc"
+    "basic-grpc": "0.0.3"
   }
 }
